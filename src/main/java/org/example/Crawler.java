@@ -15,15 +15,16 @@ public class Crawler
     /**
      * Creates output file based on prompted output name
      */
-    static void writeFile()
+    static void writeFile() throws FileNotFoundException
     {
-        if (inputFile == null)
+        String inputCheck = inputText();
+        if (inputCheck == null)
         {
             return;
         }
         try (PrintWriter pw = new PrintWriter(outputFile))
         {
-            pw.print(inputText());
+            pw.print(inputCheck);
 
         } catch (FileNotFoundException e)
         {
@@ -52,6 +53,7 @@ public class Crawler
         } catch (FileNotFoundException e)
         {
             System.out.println("Input file not found");
+            return null;
         }
 
         return sb.toString();
